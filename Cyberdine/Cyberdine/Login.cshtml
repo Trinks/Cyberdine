@@ -1,0 +1,108 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Login";
+
+    // Initialize variables
+    string username = "kevin";
+    string password = "trinks";
+    string resultMessage = "";
+
+    Validation.RequireField("username", "Username is required.");
+    Validation.RequireField("password", "First name is required.");
+
+    Validation.Add("username", Validator.StringLength(12, 1, "Username must be between 1-12 characters."));
+    Validation.Add("password", Validator.StringLength(50, 1, "First name can't be longer than 50 characters."));
+
+    var check = Session["userId"];
+
+    if (Session["userId"] == null)
+    {
+        if (IsPost)
+        {
+            username = Request.Form["username"];
+            password = Request.Form["password"];
+
+            if (Validation.IsValid())
+            {
+                Database db = Database.Open("BruidegomDatabase");
+
+                string queryCommand = "SELECT (UserId) FROM Users WHERE Username = @0 AND Password = @1";
+                var result = db.Query(queryCommand, username, password);
+
+                if (result.Count() >= 1)
+                {
+                    Session["userId"] = result.ElementAt(0)[0].ToString();
+
+                    // LOGGED IN
+                    resultMessage = "You've succesfully logged in. You'll be re-directed right now.";
+                    Response.Redirect("~/WeddingList.cshtml");
+                }
+                else
+                {
+                    resultMessage = "These credentials do not match up!";
+                }
+            }
+        }
+    }
+    else
+    {
+        // Response.Redirect("~/WeddingList.cshtml");
+    }
+}
+
+<h1 class="cover-heading">Login</h1>
+<p class="lead">Login now to make a selection of the gifts you want to receive for your wedding!</p>
+
+@check
+
+@resultMessage
+@Html.ValidationSummary()
+
+
+<form class="needs-validation" novalidate method="post">
+    @resultMessage
+    <div class="form-row">
+        <div class="col-md-4 mb-3 inp-field-reg">
+            <label for="validationCustomUsername">Username</label>
+            <div class="input-group">
+                <input type="text" class="form-control" name="username" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3 inp-field-reg">
+            <label for="validationCustomUsername">Password</label>
+            <div class="input-group">
+                <input type="password" class="form-control" name="password" id="validationCustomUsername" placeholder="Password" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Please choose a password.
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Log in!</button>
+</form>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

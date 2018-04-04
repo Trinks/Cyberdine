@@ -1,0 +1,16 @@
+﻿@helper MakeNote(string content)
+    {
+        Random r = new Random();
+        Byte[] salt = new Byte[128 / 8];
+
+        r.NextBytes(salt);
+
+        string print = Convert.ToBase64String(salt);
+
+        <div class="note"
+             style="border: 1px solid black; width: 90%; padding: 5px; margin-left: 15px;">
+            <p>
+                <strong> @print </strong>&nbsp;&nbsp; @content
+            </p>
+        </div>
+}

@@ -1,0 +1,141 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Register";
+
+    // Initialize variables
+    string username = "";
+    string firstname = "";
+    string lastname = "";
+    string password = "";
+    string passwordConfirm = "";
+    string resultMessage = "";
+
+    // Add require fields on e
+    Validation.RequireField("username", "Username is required.");
+    Validation.RequireField("firstname", "First name is required.");
+    Validation.RequireField("lastname", "Last name is required.");
+    Validation.RequireField("password", "Password is required.");
+    Validation.RequireField("passwordconfirm", "Confirmation password is required.");
+
+    Validation.Add("username", Validator.StringLength(12, 1, "Username must be between 1-12 characters."));
+    Validation.Add("firstname", Validator.StringLength(50, 1, "First name can't be longer than 50 characters."));
+    Validation.Add("lastname", Validator.StringLength(50, 1, "Last name can't be longer than 50 characters."));
+    Validation.Add("password", Validator.StringLength(20, 8, "Password must be between 8-20 characters."));
+    Validation.Add("password", Validator.EqualsTo("passwordconfirm", "Password does not match up with confirmation password."));
+
+    if (IsPost)
+    {
+        username = Request.Form["username"];
+        firstname = Request.Form["firstname"];
+        lastname = Request.Form["lastname"];
+        password = Request.Form["password"];
+        passwordConfirm = Request.Form["passwordconfirm"];
+
+        if (Validation.IsValid())
+        {
+            Database db = Database.Open("BruidegomDatabase");
+
+            string queryCommand = "SELECT (Username) FROM Users WHERE (Username) = @0";
+            var result = db.Query(queryCommand, username);
+
+            if (result.Count() >= 1)
+            {
+                resultMessage = "This username is already taken.";
+            }
+            else
+            {
+                string insertCommand = "INSERT INTO Users (Username, Password, Firstname, Lastname) Values (@0, @1, @2, @3)";
+                db.Execute(insertCommand, username, password, firstname, lastname);
+
+
+                resultMessage = "You've succesfully registered your account!";
+            }
+        }
+    }
+}
+
+<h1 class="cover-heading">Register now!</h1>
+<p class="lead">Register now at WeddingGifts.com to start adding gifts to your dream wedding!</p>
+
+<form method="post" class="needs-validation" novalidate>
+    @resultMessage
+    @Html.ValidationSummary()
+    <div class="form-row">
+
+        <div class="col-md-4 mb-3 inp-field-reg">
+            <label for="validationCustomUsername">Username</label>
+            <div class="input-group">
+                <input type="text" class="form-control" name="username" value="@Request.Form["username"]" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3 inp-field-reg">
+            <label for="validationCustomUsername">First name</label>
+            <div class="input-group">
+                <input type="text" class="form-control" name="firstname" value="@Request.Form["firstname"]" id="validationCustomUsername" placeholder="Elijah" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Please submit your first name.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3 inp-field-reg">
+            <label for="validationCustomUsername">Last name</label>
+            <div class="input-group">
+                <input type="text" class="form-control" name="lastname" value="@Request.Form["lastname"]" id="validationCustomUsername" placeholder="Trinks" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Please submit your last name.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3 inp-field-reg">
+            <label for="validationCustomUsername">Password</label>
+            <div class="input-group">
+                <input type="password" class="form-control" name="password" id="validationCustomUsername" placeholder="Password" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Please choose a password.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3 inp-field-reg">
+            <label for="validationCustomUsername">Confirm password</label>
+            <div class="input-group">
+                <input type="password" class="form-control" name="passwordconfirm" id="validationCustomUsername" placeholder="Password" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Please use the same password that you've used above.
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Register</button>
+</form>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

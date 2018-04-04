@@ -1,0 +1,97 @@
+﻿html {
+    overflow-y: scroll;
+}
+
+body {
+    background-image: url("/Images/wedding-ring-background.jpg") !important;
+    background-repeat: no-repeat;
+    background-position-y: 80px;
+    background-size: cover;
+    text-shadow: 0 0.05rem 0.1rem rgb(75, 75, 77) !important;
+    box-shadow: inset 0 0 10rem rgba(0, 0, 0, .5) !important;
+}
+
+.masthead-brand {
+    color: white;
+}
+
+.text-muted {
+    color: #ababab!important;
+}
+
+.form-control {
+    display: inline-block !important;
+    width: 80% !important;
+}
+
+.btn-submit-right {
+    display: inline-block;
+    float: right;
+    margin-right: 13px;
+}
+
+.col-md-3 {
+    width: 0;
+    padding: 0;
+}
+
+.btn-primary {
+    background-color: #535152;
+    border-color: #989090;
+}
+
+.text-centered {
+    text-align: left;
+}
+
+.container-tran {
+    background-color: rgba(39, 39, 39, 0.70);
+    padding: 10px;
+    border-radius: 5px;
+    width:  100%;
+    height: 100%;
+}
+
+.header-col {
+    background-color: #333;
+    z-index: 500;
+    width: 100%;
+    height: 48px;
+}
+
+.inp-field-reg {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.unique-code-container{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.wedding-item-list {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.row {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-control-weddinglist {
+    display: inline-block !important;
+    width: 100% !important;
+}
+
+.delete-image img{
+    width: 25%;
+}
+
+.container-gift-lists {
+    margin: 0 auto;
+}
+
+.sub-title-view {
+    font-size: 12px !important;
+}
