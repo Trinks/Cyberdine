@@ -3,46 +3,98 @@
     Page.Title = "Home";
 }
 
-<h1>Bootstrap 3.3.x fade carousel</h1>
+@section Carousel
+{
+    <div id="carousel-example-generic2" class="carousel slide carousel-fullscreen carousel-fade page-header-carousel" data-interval="1500000" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic2" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic2" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic2" data-slide-to="3"></li>
+            <li data-target="#carousel-example-generic2" data-slide-to="4"></li>
+        </ol>
 
-<div id="carouselHacked" class="carousel slide carousel-fade" data-ride="carousel">
-    <div class="carousel-container-info">
-
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active" style="background-image: url('Images/maxresdefault.jpg');">
+                <div class="overlay"></div>
+                <div class="carousel-caption">
+                    <div class="info">
+                        <h1 class="super-heading">Falcon Heavy</h1>
+                        <p class="super-paragraph">Lorem ipsum je vader in het leger met bush deed 9/11 haha doei.</p>
+                    </div>
+                    <div class="button-carousel-info">
+                        <button type="button" class="btn btn-primary btn-lg button-carousel-info-obj">FIND OUT MORE!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('Images/doublebooster.jpg');">
+                <div class="overlay"></div>
+                <div class="carousel-caption">
+                    <div class="info">
+                        <h1 class="super-heading">Double booster</h1>
+                        <p class="super-paragraph">This is a regular testing purpose on the default notice of seal squad Delta 5.</p>
+                    </div>
+                    <div class="button-carousel-info">
+                        <button type="button" class="btn btn-primary btn-lg button-carousel-info-obj">FIND OUT MORE!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('Images/falconheavy.jpg');">
+                <div class="overlay"></div>
+                <div class="carousel-caption">
+                    <div class="info">
+                        <h1 class="super-heading">Jimmy Neutron</h1>
+                        <p class="super-paragraph">Nog een keertje.</p>
+                    </div>
+                    <div class="button-carousel-info">
+                        <button type="button" class="btn btn-primary btn-lg button-carousel-info-obj">FIND OUT MORE!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('Images/doublebooster.jpg');">
+                <div class="overlay"></div>
+                <div class="carousel-caption">
+                    <div class="info">
+                        <h1 class="super-heading">Nog eentje dan maar!</h1>
+                        <p class="super-paragraph">Lorem ipsuasdfasdfasfasdf.</p>
+                    </div>
+                    <div class="button-carousel-info">
+                        <button type="button" class="btn btn-primary btn-lg button-carousel-info-obj">FIND OUT MORE!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('Images/falconheavy.jpg');">
+                <div class="overlay"></div>
+                <div class="carousel-caption">
+                    <div class="info">
+                        <h1 class="super-heading">Oke dit is dan echt de laatste</h1>
+                        <p class="super-paragraph">Read title.</p>
+                    </div>
+                    <div class="button-carousel-info">
+                        <button type="button" class="btn btn-primary btn-lg button-carousel-info-obj">FIND OUT MORE!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+}
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <div class="carousel-caption">
-                caption 1
-            </div>
-        </div>
-        <div class="item">
-            <div class="carousel-caption">
-                caption 2
-            </div>
-        </div>
-        <div class="item">
-            <div class="carousel-caption">
-                caption 3
-            </div>
-        </div>
+test 123
+
+
+<div class="row">
+    <div class="col-sm-6" style="background-color:yellow;">
+        <p>Lorem ipsum...</p>
     </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carouselHacked" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carouselHacked" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    <div class="col-sm-6" style="background-color:pink;">
+        <p>Sed ut perspiciatis...</p>
+    </div>
 </div>
-<!-- Assign carousel -->
-<script>
-    $('#carouselHacked').carousel();
-</script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
