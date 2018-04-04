@@ -2,3 +2,48 @@
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Home";
 }
+
+<h1>Bootstrap 3.3.x fade carousel</h1>
+
+<div id="carouselHacked" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-container-info">
+
+    </div>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="carousel-caption">
+                caption 1
+            </div>
+        </div>
+        <div class="item">
+            <div class="carousel-caption">
+                caption 2
+            </div>
+        </div>
+        <div class="item">
+            <div class="carousel-caption">
+                caption 3
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carouselHacked" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carouselHacked" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!-- Assign carousel -->
+<script>
+    $('#carouselHacked').carousel();
+</script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
