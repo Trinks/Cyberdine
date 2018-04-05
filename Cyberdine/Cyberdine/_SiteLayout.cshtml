@@ -31,7 +31,10 @@
     {
         @RenderSection("carousel");
     }
-
+    else if (Page.Title == "Products")
+    {
+        @RenderSection("Banner");
+    }
     <div class="container">
         @RenderBody()
     </div>

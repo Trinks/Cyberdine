@@ -37,8 +37,8 @@
                         <li class="@(Page.Title == "renamethis" ? "active" : "")"><a href="#">Extra terrestrial</a></li>
                     </ul>
                 </li>
-                <li class="@(Page.Title == "Company" ? "active" : "")"><a href="#">Company</a></li>
-                <li class="@(Page.Title == "Contact" ? "active" : "")"><a href="#">Contact</a></li>
+                <li class="@(Page.Title == "About us" ? "active" : "")"><a href="~/About.cshtml">About us</a></li>
+                <li class="@(Page.Title == "Contact" ? "active" : "")"><a href="~/Contact.cshtml">Contact</a></li>
                 @if (Session["userId"] != null)
     {
         // User is logged in
