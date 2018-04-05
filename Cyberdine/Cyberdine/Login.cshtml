@@ -3,8 +3,8 @@
     Page.Title = "Login";
 
     // Initialize variables
-    string username = "kevin";
-    string password = "trinks";
+    string username = "";
+    string password = "";
     string resultMessage = "";
 
     Validation.RequireField("username", "Username is required.");
@@ -24,7 +24,7 @@
 
             if (Validation.IsValid())
             {
-                Database db = Database.Open("BruidegomDatabase");
+                Database db = Database.Open("CyberdineDatabase");
 
                 string queryCommand = "SELECT (UserId) FROM Users WHERE Username = @0 AND Password = @1";
                 var result = db.Query(queryCommand, username, password);
@@ -35,7 +35,7 @@
 
                     // LOGGED IN
                     resultMessage = "You've succesfully logged in. You'll be re-directed right now.";
-                    Response.Redirect("~/WeddingList.cshtml");
+                    Response.Redirect("~/CRUD.cshtml");
                 }
                 else
                 {
@@ -46,18 +46,14 @@
     }
     else
     {
-        // Response.Redirect("~/WeddingList.cshtml");
+        Response.Redirect("~/Index.cshtml");
     }
 }
 
 <h1 class="cover-heading">Login</h1>
 <p class="lead">Login now to make a selection of the gifts you want to receive for your wedding!</p>
 
-@check
-
-@resultMessage
 @Html.ValidationSummary()
-
 
 <form class="needs-validation" novalidate method="post">
     @resultMessage

@@ -1,0 +1,491 @@
+﻿@using System.Configuration;
+@using WebMatrix.Data;
+@using System.Data;
+@using System.Data.Sql;
+@using System.Data.OleDb;
+@using System.Data.SqlClient;
+@{string label1 = ""; }
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Add product";
+
+    if (Session["userId"] == null)
+    {
+        Response.Redirect("~/Index.cshtml");
+    }
+    else
+    {
+        if (IsPost)
+        {
+            string formproductname = Request.Form["productname"];
+            string formdescription = Request.Form["description"];
+            string formslogan = Request.Form["slogan"];
+            string formcode = Request.Form["code"];
+            string formcategory = Request.Form["category"];
+            string formsubcategory = Request.Form["subcategory"];
+            string video1 = Request.Form["video1"];
+            string video2 = Request.Form["video2"];
+            string video3 = Request.Form["video3"];
+            string formmodel = Request.Form["3dmodel"];
+            string image1 = Request.Form["image1"];
+            string image2 = Request.Form["image2"];
+            string image3 = Request.Form["image3"];
+            string spec1 = Request.Form["spec1"];
+            string spec2 = Request.Form["spec2"];
+            string spec3 = Request.Form["spec3"];
+            string spec4 = Request.Form["spec4"];
+            string spec5 = Request.Form["spec5"];
+            string spec6 = Request.Form["spec6"];
+            string spec7 = Request.Form["spec7"];
+            string spec8 = Request.Form["spec8"];
+            string spec9 = Request.Form["spec9"];
+            string spec10 = Request.Form["spec10"];
+            string desc1 = Request.Form["desc1"];
+            string desc2 = Request.Form["desc2"];
+            string desc3 = Request.Form["desc3"];
+            string desc4 = Request.Form["desc4"];
+            string desc5 = Request.Form["desc5"];
+            string desc6 = Request.Form["desc6"];
+            string desc7 = Request.Form["desc7"];
+            string desc8 = Request.Form["desc8"];
+            string desc9 = Request.Form["desc9"];
+            string desc10 = Request.Form["desc10"];
+            string comp1 = Request.Form["comp1"];
+            string comp2 = Request.Form["comp2"];
+            string comp3 = Request.Form["comp3"];
+            string comp4 = Request.Form["comp4"];
+            string comp5 = Request.Form["comp5"];
+            string comp6 = Request.Form["comp6"];
+            string comp7 = Request.Form["comp7"];
+            string comp8 = Request.Form["comp8"];
+            string comp9 = Request.Form["comp9"];
+            string comp10 = Request.Form["comp10"];
+            string comp11 = Request.Form["comp11"];
+            string comp12 = Request.Form["comp12"];
+            string comp13 = Request.Form["comp13"];
+            string comp14 = Request.Form["comp14"];
+            string comp15 = Request.Form["comp15"];
+            string comp16 = Request.Form["comp16"];
+            string comp17 = Request.Form["comp17"];
+            string comp18 = Request.Form["comp18"];
+            string comp19 = Request.Form["comp19"];
+            string comp20 = Request.Form["comp20"];
+            string amount1 = Request.Form["amount1"];
+            string amount2 = Request.Form["amount2"];
+            string amount3 = Request.Form["amount3"];
+            string amount4 = Request.Form["amount4"];
+            string amount5 = Request.Form["amount5"];
+            string amount6 = Request.Form["amount6"];
+            string amount7 = Request.Form["amount7"];
+            string amount8 = Request.Form["amount8"];
+            string amount9 = Request.Form["amount9"];
+            string amount10 = Request.Form["amount10"];
+            string amount11 = Request.Form["amount11"];
+            string amount12 = Request.Form["amount12"];
+            string amount13 = Request.Form["amount13"];
+            string amount14 = Request.Form["amount14"];
+            string amount15 = Request.Form["amount15"];
+            string amount16 = Request.Form["amount16"];
+            string amount17 = Request.Form["amount17"];
+            string amount18 = Request.Form["amount18"];
+            string amount19 = Request.Form["amount19"];
+            string amount20 = Request.Form["amount20"];
+
+
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Cyberdine.mdf;Integrated Security=True";
+            con.Open();
+            SqlCommand cmd = new SqlCommand("ProductAdd", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@name", formproductname);
+            cmd.Parameters.AddWithValue("@description", formdescription);
+            cmd.Parameters.AddWithValue("@slogan", formslogan);
+            cmd.Parameters.AddWithValue("@category", formcategory);
+            cmd.Parameters.AddWithValue("@subcategory", formsubcategory);
+            cmd.Parameters.AddWithValue("@model", formmodel);
+            cmd.ExecuteNonQuery();
+
+            SqlCommand productid = new SqlCommand("SELECT * FROM Products WHERE productid=(SELECT max(productid) FROM Products)", con);
+            string pid = productid.ExecuteScalar().ToString();
+
+            con.Close();
+            con.Open();
+            SqlCommand specifications = new SqlCommand("ProductAdd2", con);
+            specifications.CommandType = CommandType.StoredProcedure;
+            specifications.Parameters.AddWithValue("@spec1", spec1);
+            specifications.Parameters.AddWithValue("@spec2", spec2);
+            specifications.Parameters.AddWithValue("@spec3", spec3);
+            specifications.Parameters.AddWithValue("@spec4", spec4);
+            specifications.Parameters.AddWithValue("@spec5", spec5);
+            specifications.Parameters.AddWithValue("@spec6", spec6);
+            specifications.Parameters.AddWithValue("@spec7", spec7);
+            specifications.Parameters.AddWithValue("@spec8", spec8);
+            specifications.Parameters.AddWithValue("@spec9", spec9);
+            specifications.Parameters.AddWithValue("@spec10", spec10);
+            specifications.Parameters.AddWithValue("@desc1", desc1);
+            specifications.Parameters.AddWithValue("@desc2", desc2);
+            specifications.Parameters.AddWithValue("@desc3", desc3);
+            specifications.Parameters.AddWithValue("@desc4", desc4);
+            specifications.Parameters.AddWithValue("@desc5", desc5);
+            specifications.Parameters.AddWithValue("@desc6", desc6);
+            specifications.Parameters.AddWithValue("@desc7", desc7);
+            specifications.Parameters.AddWithValue("@desc8", desc8);
+            specifications.Parameters.AddWithValue("@desc9", desc9);
+            specifications.Parameters.AddWithValue("@desc10", desc10);
+            specifications.Parameters.AddWithValue("@pid", pid);
+
+            SqlCommand components = new SqlCommand("ProductAdd3", con);
+            components.CommandType = CommandType.StoredProcedure;
+            components.Parameters.AddWithValue("@comp1", comp1);
+            components.Parameters.AddWithValue("@comp2", comp2);
+            components.Parameters.AddWithValue("@comp3", comp3);
+            components.Parameters.AddWithValue("@comp4", comp4);
+            components.Parameters.AddWithValue("@comp5", comp5);
+            components.Parameters.AddWithValue("@comp6", comp6);
+            components.Parameters.AddWithValue("@comp7", comp7);
+            components.Parameters.AddWithValue("@comp8", comp8);
+            components.Parameters.AddWithValue("@comp9", comp9);
+            components.Parameters.AddWithValue("@comp10", comp10);
+            components.Parameters.AddWithValue("@comp11", comp11);
+            components.Parameters.AddWithValue("@comp12", comp12);
+            components.Parameters.AddWithValue("@comp13", comp13);
+            components.Parameters.AddWithValue("@comp14", comp14);
+            components.Parameters.AddWithValue("@comp15", comp15);
+            components.Parameters.AddWithValue("@comp16", comp16);
+            components.Parameters.AddWithValue("@comp17", comp17);
+            components.Parameters.AddWithValue("@comp18", comp18);
+            components.Parameters.AddWithValue("@comp19", comp19);
+            components.Parameters.AddWithValue("@comp20", comp20);
+            components.Parameters.AddWithValue("@amount1", amount1);
+            components.Parameters.AddWithValue("@amount2", amount2);
+            components.Parameters.AddWithValue("@amount3", amount3);
+            components.Parameters.AddWithValue("@amount4", amount4);
+            components.Parameters.AddWithValue("@amount5", amount5);
+            components.Parameters.AddWithValue("@amount6", amount6);
+            components.Parameters.AddWithValue("@amount7", amount7);
+            components.Parameters.AddWithValue("@amount8", amount8);
+            components.Parameters.AddWithValue("@amount9", amount9);
+            components.Parameters.AddWithValue("@amount10", amount10);
+            components.Parameters.AddWithValue("@amount11", amount11);
+            components.Parameters.AddWithValue("@amount12", amount12);
+            components.Parameters.AddWithValue("@amount13", amount13);
+            components.Parameters.AddWithValue("@amount14", amount14);
+            components.Parameters.AddWithValue("@amount15", amount15);
+            components.Parameters.AddWithValue("@amount16", amount16);
+            components.Parameters.AddWithValue("@amount17", amount17);
+            components.Parameters.AddWithValue("@amount18", amount18);
+            components.Parameters.AddWithValue("@amount19", amount19);
+            components.Parameters.AddWithValue("@amount20", amount20);
+            components.Parameters.AddWithValue("@pid", pid);
+
+            SqlCommand images = new SqlCommand("ProductAdd4", con);
+            images.CommandType = CommandType.StoredProcedure;
+            images.Parameters.AddWithValue("@pid", pid);
+            images.Parameters.AddWithValue("@image1", image1);
+            images.Parameters.AddWithValue("@image2", image2);
+            images.Parameters.AddWithValue("@image3", image3);
+
+            SqlCommand videos = new SqlCommand("ProductAdd5", con);
+            videos.CommandType = CommandType.StoredProcedure;
+            videos.Parameters.AddWithValue("@pid", pid);
+            videos.Parameters.AddWithValue("@video1", video1);
+            videos.Parameters.AddWithValue("@video2", video2);
+            videos.Parameters.AddWithValue("@video3", video3);
+
+            SqlCommand code = new SqlCommand("ProductAdd6", con);
+            code.CommandType = CommandType.StoredProcedure;
+            code.Parameters.AddWithValue("@pid", pid);
+            code.Parameters.AddWithValue("@code", formcode);
+
+            specifications.ExecuteNonQuery();
+            components.ExecuteNonQuery();
+            images.ExecuteNonQuery();
+            videos.ExecuteNonQuery();
+            code.ExecuteNonQuery();
+            con.Close();
+
+            label1 = "Product added";
+
+            string path = System.AppDomain.CurrentDomain.BaseDirectory;
+            System.IO.File.Copy(path + "/ProductTemplate.cshtml", path + "/Products/Product" + pid + ".cshtml");
+            string text = File.ReadAllText(path + "/Products/Product" + pid + ".cshtml");
+            text = text.Replace("xxx", pid);
+            File.WriteAllText(path + "/Products/Product" + pid + ".cshtml", text);
+        }
+    }
+}
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            overflow-y: scroll;
+            display: block;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+
+    </style>
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <form class="well form-horizontal" id="productaddform" method="post">
+        <h1>Add Product</h1>
+        <fieldset>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Product Name:</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <input name="productname" placeholder="Product Name" class="form-control" required="required" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Category:</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <select name="category">
+                            <option value="Drone">Drone</option>
+                            <option value="Robot">Robot</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Subcategory:</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <select name="subcategory">
+                            <option value="Driving">Driving</option>
+                            <option value="Walking">Walking</option>
+                            <option value="Flying">Flying</option>
+                            <option value="Nautical">Nautical</option>
+                            <option value="Stationary">Stationary</option>
+                            <option value="Extra Terestrial">Extra Terestrial</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Link to 3D Model</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <input name="3dmodel" placeholder="3D Model Link" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Link to Images</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <input name="image1" placeholder="JPG/JPEG image link" class="form-control" type="text">
+                        <input name="image2" placeholder="JPG/JPEG image link" class="form-control" type="text">
+                        <input name="image3" placeholder="JPG/JPEG image link" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Link to video</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <input name="video1" placeholder="Video link" class="form-control" type="text">
+                        <input name="video2" placeholder="Video link" class="form-control" type="text">
+                        <input name="video3" placeholder="Video link" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Product Slogan:</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <textarea name="slogan" rows="4" cols="100" required="required">Slogan</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Description:</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <textarea name="description" rows="10" cols="100" required="required">Product Description</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Code:</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <textarea name="code" rows="10" cols="100" required="required">Product Code</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Product Specifications:</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <table style="width:475px; height: 310px; border:1px solid black;">
+                        <tr>
+                            <td><input name="spec1" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc1" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="spec2" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc2" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="spec3" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc3" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="spec4" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc4" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="spec5" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc5" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="spec6" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc6" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="spec7" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc7" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="spec8" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc8" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="spec9" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc9" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="spec10" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc10" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="spec1" placeholder="Specification" class="form-control" type="text"></td>
+                            <td><input name="desc1" placeholder="Description" class="form-control" type="text"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Product Components:</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <table style="width:475px; height: 310px; border:1px solid black;">
+                        <tr>
+                            <td><input name="comp1" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount1" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp2" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount2" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp3" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount3" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp4" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount4" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp5" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount5" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp6" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount6" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp7" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount7" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp8" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount8" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp9" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount9" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp10" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount10" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp11" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount11" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp12" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount12" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp13" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount13" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp14" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount14" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp15" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount15" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp16" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount16" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp17" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount17" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp18" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount18" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp19" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount19" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="comp20" placeholder="Component" class="form-control" type="text"></td>
+                            <td><input name="amount20" placeholder="Amount" class="form-control" type="number"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <button class="btn" name="addproduct" type="submit" style="color: #fff; background-color: #a70002; border-color: #820002;">Add Product</button>
+                </div>
+            </div>
+            <h3 class="text-center" style="color:lawngreen">@label1</h3>
+        </fieldset>
+    </form>
+
+</body>
+</html>
