@@ -75,12 +75,12 @@ h1, h2, h3, h4 {
 }
 
 .super-heading {
-    font-size: 70px;
+    font-size: 43px;
 }
 
 
 .super-paragraph {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 300;
 }
 
@@ -166,4 +166,110 @@ body > .container {
     color: #ffffff;
     background-color: #a70002;
     border-color: #820002;
+}
+
+.content {
+    color: white;
+height: auto;
+width: auto;
+    width: auto;
+    padding-bottom: 6px;
+    padding-right: 12px;
+    padding-top: 210px;
+    padding-left: 30px;
+    margin-bottom: 75px;
+}
+
+.content:hover .content-img,
+.content:focus .content-img {
+    transform: scale(1.2);
+}
+
+.h3-content-title {
+    font-weight: 600;
+}
+
+.p-content-description {
+    font-weight: 400;
+}
+
+
+
+.content-links {
+    display: none;
+    font-size: 35px;
+    color: #ffffff !important;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    cursor: pointer;
+}
+
+.parent:hover .child, .parent:focus .child {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+    .parent:hover .child:before, .parent:focus .child:before {
+        display: block;
+    }
+
+.parent:hover a, .parent:focus a {
+    display: block;
+}
+
+.child:before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(213, 0, 2, 0.3);
+}
+
+.right {
+    float: right !important;
+}
+/* Image zoom on hover + Overlay colour */
+.parent {
+    width: 45%;
+    margin: 20px;
+    height: 300px;
+    border: 1px solid black;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 70px;
+}
+
+.child {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+/* Several different images */
+.bg-one {
+    background-image: url('/Images/drone-over-beach.jpg');
+}
+
+.bg-two {
+    background-image: url('/Images/Image-1l-NASA.jpg');
 }
