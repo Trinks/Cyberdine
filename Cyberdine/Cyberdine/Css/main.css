@@ -248,9 +248,7 @@ body > .container {
 }
 
 .banner {
-    margin-bottom: 100px;
     position: relative;
-    float: left;
     padding: 80px 0px 0px !important;
     width: 100%;
     height: 500px;
@@ -266,50 +264,11 @@ body > .container {
     background-repeat: no-repeat;
 }
 
-.banner-wrapper {
-    position: relative;
-    top: 45%;
-    transform: translateY(-55%);
-    padding-left: 90px;
-    color: white;
+.test {
+    position:absolute;
+    top: 100px;
 }
-
-.banner-title {
-    margin-bottom: 10px;
-    font-size: 40px;
-}
-.banner-sub-title {
+.test2 {
     position: absolute;
-}
-
-.h1-edit {
-    font-size: 20px !important;
-    margin-top: -13px !important;
-}
-
-.gauw {
-    height:400px;
-    color: white;
-    background-color: black;
-}
-
-.gauw1 {
-    color: white;
-    background-color: red;
-}
-
-.gauw2 {
-    color: green;
-    background-color: turquoise;
-}
-
-.footer-add-product {
-    bottom: -900px;
-}
-.well {
-    margin-bottom: 50px !important;
-}
-
-body > .add-product-top {
-    padding: 35px 24px 25px !important;
+    top: 200px;
 }

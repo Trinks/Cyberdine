@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <link rel='shortcut icon' type='image/x-icon' href='~/Images/favicon.ico' />
     <title>@AppState["websiteTitle"] - @Page.Title</title>
@@ -22,6 +22,8 @@
     <link href="~/Css/main.css" rel="stylesheet">
 </head>
 
+
+
 <body>
     @RenderPage("~/Shared/_Header.cshtml")
 
@@ -33,7 +35,7 @@
     {
         @RenderSection("Banner");
     }
-    <div class="container @if (Page.Title == "Add product") { <text> add-product-top </text> } ">
+    <div class="container">
         @RenderBody()
     </div>
 
@@ -51,4 +53,4 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://getbootstrap.com/docs/3.3/assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
-</html>
+    </html>

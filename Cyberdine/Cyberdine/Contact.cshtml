@@ -1,96 +1,14 @@
-﻿
-@{
+﻿@{
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Contact";
-
-    string firstName = "";
-    string lastName = "";
-    string email = "";
-    string message = "";
-    string errorMessage = "Sending contactform failed, please try again";
-
-    Validation.RequireField("FirstName", "Your first name is required.");
-    Validation.RequireField("LastName", "Your last name is required.");
-    Validation.RequireField("Email", "Your email adress is required.");
-    Validation.RequireField("Message", "Your message is required.");
-
-    Validation.Add("FirstName", Validator.StringLength(12, 1, "Your first name can't be longer than 150 characters."));
-    Validation.Add("LastName", Validator.StringLength(12, 1, "Your last name can't be longer than 150 characters."));
-    Validation.Add("Email", Validator.StringLength(12, 1, "Your email address can't be longer than 150 characters."));
-    Validation.Add("Message", Validator.StringLength(12, 1, "Your email address can't be longer than 2000 characters."));
-
-    if (IsPost)
-    {
-        if (Validation.IsValid())
-        {
-            firstName = Request.Form["FirstName"];
-            lastName = Request.Form["LastName"];
-            email = Request.Form["Email"];
-            message = Request.Form["Message"];
-
-        }
-
-        string emailMessage = "First name: " + firstName + "<br>" +
-                          "Last name: " + lastName + "<br>" +
-                          "Email: " + email + "<br>" +
-                          "<br>" +
-                          firstName + " " + lastName + " has send you a new email containing: <br>" +
-                          message;
-
-        try
-        {
-            // Initialize WebMail helper
-            WebMail.SmtpServer = "your-SMTP-host";
-            WebMail.SmtpPort = 25;
-            WebMail.UserName = "your-username-here";
-            WebMail.Password = "your-account-password";
-            WebMail.From = "your-email-adres-here";
-
-            // Send email
-            WebMail.Send(to: "your-email-adres-here", subject: "new contactform",
-                body: emailMessage);
-        }
-        catch (Exception ex)
-        {
-            errorMessage = ex.Message;
-        }
-    }
 }
-
 
 <h2>Contact</h2>
 
 <div class="row">
     <div class="col-sm">
         <div class="window">
-            <style>
-                textarea {
-                    margin-left: 15px;
-                }
-
-                button {
-                    margin-left: 15px;
-                }
-
-                .floatL {
-                    margin-left: 15px;
-                }
-
-                h1 {
-                    margin-top: 25px;
-                }
-
-                h2 {
-                    margin-top: 25px;
-                }
-
-                p {
-                    max-width: 850px;
-                    margin-top: 10px;
-                    margin-left: 15px;
-                }
-            </style>
-            <p>If you have any questions or feedback regarding the site, please do not hesitate to contact us through the contact form below:<br><br></p>
+            It's important to fill in this form correctly.<br><br>
 
             <div class="alert alert-warning" role="alert" style="display:none">
                 There is still some information missing. Please fill these in correctly!
@@ -98,31 +16,65 @@
 
             <div id="alert alert-success" role="alert" style="display:none">
             </div>
-            <form method="POST" enctype="multipart/form-data">
+            <form action="#" method="POST" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputFirstname4">First name</label>
-                        <input type="text" class="form-control" name="FirstName" tabindex="1" value="" placeholder="Firstname" required>
+                        <input type="text" class="form-control" name="firstName" tabindex="1" value="" placeholder="Voornaam" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputLastname4">Last name</label>
-                        <input type="text" class="form-control" name="LastName" tabindex="2" value="" placeholder="Surname" required>
-                    </div>
-                </div>
-                <div class="floatL">
-                    <div class="form-group">
-                        <label for="inputEmail4">E-mail address</label>
-                        <input type="email" class="form-control" name="Email" tabindex="3" value="" placeholder="E-mail address" required>
+                        <input type="text" class="form-control" name="lastName" tabindex="2" value="" placeholder="Achternaam" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="floatL">
-                        <label for="exampleFormControlTextarea1">Your question or suggestion</label>
-                    </div>
-                    <textarea class="form-control" name="Message" tabindex="5" value="" rows="5" required></textarea>
+                    <label for="inputEmail4">E-mail adres</label>
+                    <input type="email" class="form-control" name="email" tabindex="3" value="" placeholder="E-mail adres" required>
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary">Send message!</button>
+                <div class="form-group">
+                    <label for="inputPhoneNumber4">Phone number</label>
+                    <input type="tel" class="form-control" name="phone" tabindex="4" value="" placeholder="06-12345678 / (058)-874234" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Your question or suggestion</label>
+                    <textarea class="form-control" name="message" tabindex="5" value="" rows="5" required></textarea>
+                </div>
+                <button type="submit" name="submit" class="btn btn-primary">Verstuur gegevens</button>
             </form>
         </div>
     </div>
 </div>
+
+<head>
+
+    <style>
+
+        h2 {
+            margin-top: 75px;
+        }
+
+        p {
+            max-width: 250px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<h1>spam</h1>
+<h2>Contact</h2>
+<p>
+    
+    <ul style="list-style-type:none">
+        <li>E-mail: contact@cyberdyne.com</li>
+        <li>Telefoon: 058-85473215</li>
+    </ul>
+</p>
+
+<h2>Adres</h2>
+<p>
+   Mail and packages
+    <ul style="list-style-type:none">
+        <li>Rengerslaan 10</li>
+        <li>8917 DD, Leeuwarden</li>
+    </ul>
+</p>
