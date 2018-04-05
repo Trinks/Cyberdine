@@ -39,16 +39,6 @@
                 </li>
                 <li class="@(Page.Title == "About us" ? "active" : "")"><a href="~/About.cshtml">About us</a></li>
                 <li class="@(Page.Title == "Contact" ? "active" : "")"><a href="~/Contact.cshtml">Contact</a></li>
-                @if (Session["userId"] != null)
-    {
-        // User is logged in
-    }
-    else
-    {
-        // User is not logged in
-            <li class="@(Page.Title == "Register" ? "active" : "")"><a href="~/Register.cshtml">Register</a></li>
-            <li class="@(Page.Title == "Login" ? "active" : "")"><a href="~/Login.cshtml">Login</a></li>
-}
             </ul>
         </div><!--/.nav-collapse -->
     </div>
